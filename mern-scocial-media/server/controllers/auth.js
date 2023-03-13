@@ -42,3 +42,24 @@ export const register = async (req, res) =>{
         res.status(500).json({error : error.message});
     }
 }
+
+/**Login user */
+export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const dbUser = await User.findOne( {email: email});
+
+        if(!dbUser) return res.status(400).json({msg: "User does not exist"});
+        const isMatched = await bcrypt.compare(password, dbUser.password);
+
+        if(!isMatched) return res.status(400).json({msg: "Invalid Credentials"});
+
+        const token = jwt.sign({ id: dbUser._id }, process.env.JWT_SECRET);
+        delete dbUser.password
+        //so that the pass is not sent to frontend
+
+        res.status(200).json({ token, dbUser });
+    } catch (error) {
+        res.status(500).json({error : error.message});
+    }
+}
