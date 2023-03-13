@@ -56,10 +56,10 @@ export const login = async (req, res) => {
 
         const token = jwt.sign({ id: dbUser._id }, process.env.JWT_SECRET);
         delete dbUser.password
-        //so that the pass is not sent to frontend
+        //deleting so that the password is not sent to frontend
 
         res.status(200).json({ token, dbUser });
     } catch (error) {
-        res.status(500).json({error : error.message});
+        res.status(500).json({error : error.message}); 
     }
 }

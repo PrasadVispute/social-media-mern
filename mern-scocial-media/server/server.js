@@ -11,6 +11,7 @@ import mongoose from 'mongoose';
 
 import { register } from './controllers/auth.js';
 import authRoutes from './routes/auth.js';
+import userRoutes from './routes/user.js';
 
 /*CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -44,6 +45,7 @@ app.post('/auth/register', upload.single("picture"), register);
 
 /**ROUTES */
 app.use("/auth", authRoutes);
+app.use("/user", userRoutes);
 
 /**MONGOOSE SETUP */
 const PORT = process.env.PORT || 6000;
