@@ -37,6 +37,7 @@ const Navbar = () => {
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
+  const primaryDark = theme.palette.primary.dark;
   const alt = theme.palette.background.alt;
 
   //   const fullName = `${user.firstName} ${user.lastName}`;
@@ -48,7 +49,7 @@ const Navbar = () => {
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
-          color="primary"
+          color={theme.palette.mode === "dark" ? "primary" : "secondary"}
           onClick={() => navigate("/home")}
           sx={{
             "&:hover": {
@@ -59,6 +60,7 @@ const Navbar = () => {
         >
           Sociopedia
         </Typography>
+
         {isNonMobileScreens && (
           <FlexBetween
             backgroundColor={neutralLight}
