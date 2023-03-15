@@ -37,11 +37,10 @@ const Navbar = () => {
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
-  const primaryDark = theme.palette.primary.dark;
   const alt = theme.palette.background.alt;
 
-  //   const fullName = `${user.firstName} ${user.lastName}`;
-  const fullName = "Prasad Vispute";
+  const fullName = `${user.firstName} ${user.lastName}`;
+  //const fullName = "Prasad Vispute";
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -49,11 +48,11 @@ const Navbar = () => {
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
-          color={theme.palette.mode === "dark" ? "primary" : "secondary"}
+          color={theme.palette.mode === "dark" ? "primary" : "dark"}
           onClick={() => navigate("/home")}
           sx={{
             "&:hover": {
-              color: primaryLight,
+              color: theme.palette.mode === "dark" ? "#AFCE31" : "#5031CE",
               cursor: "pointer",
             },
           }}
